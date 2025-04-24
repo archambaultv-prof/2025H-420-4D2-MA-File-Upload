@@ -1,0 +1,19 @@
+body {
+    font-family: sans-serif;
+    margin: 2rem;
+    line-height: 1.5;
+  }
+  h1, h2 {
+    margin-bottom: 0.5rem;
+  }
+  section {
+    margin-bottom: 2rem;
+  }
+  form {
+    margin-top: 0.5rem;
+  }
+  pre {
+    background: #f4f4f4;
+    padding: 1rem;
+  }
+  

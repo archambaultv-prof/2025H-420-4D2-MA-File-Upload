@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book Upload Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Book Upload Demo</h1>
+
+  <section>
+    <h2>Upload CSV or JSON</h2>
+    <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" accept=".csv,application/json" required />
+      <button type="submit">Upload</button>
+    </form>
+    <pre id="uploadResult"></pre>
+  </section>
+
+  <section>
+    <h2>Download Books</h2>
+    <form action="/api/books" method="get">
+      <label><input type="radio" name="format" value="json" checked> JSON</label>
+      <label><input type="radio" name="format" value="csv"> CSV</label>
+      <button type="submit">Download</button>
+    </form>
+  </section>
+
+  <script>
+    // Optional: AJAX upload feedback
+    document.getElementById('uploadForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const res = await fetch('/api/upload', { method: 'POST', body: new FormData(e.target) });
+      document.getElementById('uploadResult').textContent = await res.text();
+    });
+  </script>
+</body>
+</html>
